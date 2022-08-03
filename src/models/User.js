@@ -1,6 +1,21 @@
 const { Schema } = require("mongoose");
 
-const userSchema = {};
+const userSchema = {
+  username: {
+    type: String,
+    required: true,
+    minLength: 2,
+    maxLength: 20,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    minLength: 1,
+    maxLength: 50,
+    trim: true,
+  },
+};
 
 const schema = new Schema(userSchema);
 
