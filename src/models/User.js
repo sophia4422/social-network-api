@@ -6,6 +6,7 @@ const userSchema = {
     required: true,
     minLength: 2,
     maxLength: 20,
+    unique: true,
     trim: true,
   },
   email: {
@@ -13,7 +14,9 @@ const userSchema = {
     required: true,
     minLength: 1,
     maxLength: 50,
+    unique: true,
     trim: true,
+    match: true,
   },
 };
 
