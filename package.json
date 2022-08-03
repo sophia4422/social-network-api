@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/sophia4422/social-network-api#readme",
   "dependencies": {
+    "express": "^4.18.1",
     "mongoose": "^6.5.0"
   }
 }
