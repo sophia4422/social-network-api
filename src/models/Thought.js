@@ -7,8 +7,13 @@ const thoughtSchema = {
     minLength: 1,
     maxLength: 280,
   },
-  createdAt: {},
-  username: {},
+  createdAt: {
+    type: Date,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
   reactions: {},
 };
 

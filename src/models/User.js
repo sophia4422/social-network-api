@@ -16,8 +16,10 @@ const userSchema = {
     maxLength: 50,
     unique: true,
     trim: true,
-    match: true,
+    match: [/.+@.+\..+/],
   },
+  thoughts: [{}],
+  friends: [{}],
 };
 
 const schema = new Schema(userSchema);
