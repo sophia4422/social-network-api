@@ -1,28 +1,18 @@
 const express = require("express");
 
-const connection = require("./config/connection");
-const routes = require("./routes");
+// const apiRoutes = require("./routes/api");
+// const htmlRoutes = require("./routes/view");
+
+const PORT = process.env.PORT || 4000;
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(express.static("public"));
+// app.use("/api", apiRoutes);
+// app.use("/", htmlRoutes);
 
-app.use(routes);
-
-const init = async () => {
-  try {
-    await connection.sync({ force: false });
-
-    console.log(`[INFO]: DB connection successful`);
-
-    app.listen(PORT, () =>
-      console.log(`Server running on http://localhost:${PORT}`)
-    );
-  } catch (error) {
-    console.log(`[ERROR]: Connection to DB failed - ${error.message}`);
-  }
-};
-
-init();
+app.listen(PORT, () => {
+  console.log(` listening on http://localhost:${PORT}`);
+});
