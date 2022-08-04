@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const { Router } = require("express");
+const router = Router();
 const { Thought, User } = require("../../models");
 
 //GET /
@@ -18,3 +19,5 @@ router.delete("/:id", async (req, res) => {});
 
 //USE /:userID
 router.use("/:id", async (req, res) => {});
+
+module.exports = router;

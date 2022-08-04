@@ -1,4 +1,6 @@
-const router = require("express").Router();
+const { Router } = require("express");
+const router = Router();
+
 const friendsRoutes = require("./friends");
 const thoughtsRoutes = require("./thoughts");
 const reactionsRoutes = require("./reactions");
