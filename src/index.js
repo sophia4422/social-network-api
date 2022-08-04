@@ -1,5 +1,7 @@
 const express = require("express");
 
+const routes = require("./routes");
+
 // const apiRoutes = require("./routes/api");
 // const htmlRoutes = require("./routes/view");
 
@@ -9,9 +11,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static("public"));
-// app.use("/api", apiRoutes);
-// app.use("/", htmlRoutes);
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(` listening on http://localhost:${PORT}`);
