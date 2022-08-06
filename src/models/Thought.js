@@ -9,6 +9,8 @@ const thoughtSchema = {
   },
   createdAt: {
     type: Date,
+    required: true,
+    default: moment(),
   },
   username: {
     type: String,
