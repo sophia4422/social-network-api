@@ -1,5 +1,5 @@
 const { User, Thought } = require("../../models");
 
-const createReactionForThought = () => {};
+const createReactionForThought = (req, res) => {};
 
-const removeReactionFromThought = () => {};
+const removeReactionFromThought = (req, res) => {};
