@@ -10,7 +10,21 @@ const getAllThoughts = async (req, res) => {
   }
 };
 
-const getThoughtsById = () => {};
+const getThoughtsById = () => {
+  try {
+    const { id } = req.params;
+
+    const thought = await Thoughts.findById(id);
+
+    if (!thought) {
+      return res.status(404).json({ success: false });
+    }
+
+    return res.json({ data: thought });
+  } catch (error) {
+    console.log(`[Error]: could not get thought | ${error.message}`);
+  }
+};
 
 const createThought = () => {};
 
@@ -25,3 +39,12 @@ const deleteThought = (req, res) => {
         console.log(`[Error]: Could not delete thought | ${error.message}`);
     }
 };
+
+module.exports = {
+  getAllThoughts,
+  getThoughtsById,
+  createThought,
+  updateThought,
+  deleteThought
+
+}
