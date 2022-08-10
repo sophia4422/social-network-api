@@ -28,7 +28,7 @@ const getUserById = (req, res) => {
 
 
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
     try {
         const { userName, email } = req.body;
     
@@ -47,7 +47,7 @@ const createUser = (req, res) => {
       }
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { userName, email } = req.body;
@@ -64,7 +64,7 @@ const updateUser = (req, res) => {
       }
 };
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
     const { id } = req.params;
     try {
       const user = await User.findById(id);
