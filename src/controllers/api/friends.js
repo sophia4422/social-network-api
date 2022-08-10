@@ -1,5 +1,27 @@
 const { User, Thought } = require("../../models");
 
-const createFriendFromUser = () => {};
+const createFriendFromUser = (req, res) => {
+    const { userId, friendId } = req.params;
 
-const removeFriendFromUser = () => {};
+    try {
+      if (userId && friendId) {
+        await User.findOneAndUpdate(
+          { _id: userId },
+          { $addToSet: { friends: friendId } },
+          { new: true, runValidators: true }
+        );
+  
+        await User.findOneAndUpdate(
+          { _id: friendId },
+          { $addToSet: { friends: userId } },
+          { new: true, runValidators: true }
+        );
+        return res.json({ success: true });
+      } else res.status(500).json({ success: false });
+    } catch (error) {
+      console.log(`[ERROR]: Could not add new friend | ${error.message}`);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+const removeFriendFromUser = (req, res) => {};
