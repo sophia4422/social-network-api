@@ -1,11 +1,28 @@
 const { User, Thought } = require("../../models");
 
-const getAllUsers = () => {};
+const getAllUsers = (req, res) => {  
+    try {
+        const users = await User.find({});
 
-const getUserById = () => {};
+        return res.json({ data: users });
+        } catch (error) {
+        console.log(`[Error]: Failed to get all users | ${error.message}`);
+    }
+};
 
-const createUser = () => {};
+const getUserById = (req, res) => {};
 
-const updateUser = () => {};
+const createUser = (req, res) => {};
 
-const deleteUser = () => {};
+const updateUser = (req, res) => {};
+
+const deleteUser = (req, res) => {};
+
+
+module.exports = {
+    getAllUsers,
+    getUserById,
+    createUser,
+    updateUser,
+    deleteUser,
+  };
