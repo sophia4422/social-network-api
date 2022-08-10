@@ -10,7 +10,23 @@ const getAllUsers = (req, res) => {
     }
 };
 
-const getUserById = (req, res) => {};
+const getUserById = (req, res) => {
+    try {
+        const { id } = req.params;
+    
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ success: false });
+        }
+
+        return res.json({ data: user});
+    } catch (error) {
+        console.log(`[Error]: Failed to get the user | ${error.message}`); 
+    }
+}
+
+
 
 const createUser = (req, res) => {};
 
