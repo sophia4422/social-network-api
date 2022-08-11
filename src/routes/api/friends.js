@@ -1,11 +1,14 @@
 const { Router } = require("express");
 const router = Router();
-const { Thought, User } = require("../../models");
+const {
+  createFriendFromUser,
+  removeFriendFromUser,
+} = require("../../controllers/api/friends");
 
 //POST /friends/:friendId
-router.post("/friends/:friendId", async (req, res) => {});
+router.post("/friends", createFriendFromUser);
 
 //DEL /friends/:friendId
-router.delete("/friends/:friendId", async (req, res) => {});
+router.delete("/friends/:friendId", removeFriendFromUser);
 
 module.exports = router;

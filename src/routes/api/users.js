@@ -1,22 +1,31 @@
 const { Router } = require("express");
 const router = Router();
-const { Thought, User } = require("../../models");
+const friends = require("./friends.js");
+
+const {
+  getAllUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+} = require("../../controllers/api/users");
 
 //GET /
-router.get("/", async (req, res) => {});
+router.get("/", getAllUsers);
 
 //GET /:id
-router.get("/:id", async (req, res) => {});
+router.get("/:id", getUserById);
 
 //POST /
-router.post("/", async (req, res) => {});
+router.post("/", createUser);
 
 //PUT /:id
-router.put("/:id", async (req, res) => {});
+router.put("/:id", updateUser);
 
 //DEL /:id
-router.delete("/:id", async (req, res) => {});
+router.delete("/:id", deleteUser);
 
 //USE /:userID
+router.use("/:userId", friends);
 
 module.exports = router;

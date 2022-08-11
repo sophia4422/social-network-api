@@ -2,22 +2,32 @@ const { Router } = require("express");
 const router = Router();
 const { Thought, User } = require("../../models");
 
+const reactions = require("./reactions.js");
+
+const {
+  getAllThoughts,
+  getThoughtsById,
+  createThought,
+  updateThought,
+  deleteThought,
+} = require("../../controllers/api/thoughts");
+
 //GET /
-router.get("/", async (req, res) => {});
+router.get("/", getAllThoughts);
 
 //GET /:id
-router.get("/:id", async (req, res) => {});
+router.get("/:id", getThoughtsById);
 
 //POST /
-router.post("/", async (req, res) => {});
+router.post("/", createThought);
 
 //PUT /:id
-router.put("/:id", async (req, res) => {});
+router.put("/:id", updateThought);
 
 //DEL /:id
-router.delete("/:id", async (req, res) => {});
+router.delete("/:id", deleteThought);
 
 //USE /:userID
-router.use("/:id", async (req, res) => {});
+router.use("/:thoughtId", reactions);
 
 module.exports = router;

@@ -14,7 +14,7 @@ const getThoughtsById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const thought = await Thoughts.findById(id);
+    const thought = await Thought.findById(id);
 
     if (!thought) {
       return res.status(404).json({ success: false });
@@ -28,10 +28,10 @@ const getThoughtsById = async (req, res) => {
 
 const createThought = async (req, res) => {
   try {
-    const { userName, thoughtText } = req.body;
+    const { username, thoughtText } = req.body;
 
-    if (userName && thoughtText) {
-      await Thoughts.create({ userName, thoughtText });
+    if (username && thoughtText) {
+      await Thought.create({ username, thoughtText });
       return res.json({ success: true });
     } else {
       return res.status(400).json({
@@ -48,10 +48,10 @@ const createThought = async (req, res) => {
 const updateThought = async (req, res) => {
   try {
     const { id } = req.params;
-    const { userName, thoughtText } = req.body;
-    if (userName || thoughtText) {
-      await Thoughts.findByIdAndUpdate(id, {
-        userName,
+    const { username, thoughtText } = req.body;
+    if (username || thoughtText) {
+      await Thought.findByIdAndUpdate(id, {
+        username,
         thoughtText,
       });
       return res.json({ success: true });

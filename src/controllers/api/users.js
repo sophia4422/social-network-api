@@ -30,9 +30,9 @@ const getUserById = (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const { userName, email } = req.body;
+        const { username, email } = req.body;
     
-        if (userName && email) {
+        if (username && email) {
           await User.create({ userName, email });
           return res.json({ success: true });
         } else {
@@ -50,10 +50,10 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
-        const { userName, email } = req.body;
-        if (userName || email) {
+        const { username, email } = req.body;
+        if (username || email) {
           await User.findByIdAndUpdate(id, {
-            userName,
+            username,
             email,
           });
           return res.json({ success: true });
@@ -70,7 +70,7 @@ const deleteUser = async (req, res) => {
       const user = await User.findById(id);
       const userThoughts = user.thoughts;
       console.log(userThoughts);
-      await Thoughts.deleteMany({ _id: userThoughts });
+      await Thought.deleteMany({ _id: userThoughts });
   
       try {
         await User.findByIdAndDelete(id);

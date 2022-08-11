@@ -1,11 +1,14 @@
 const { Router } = require("express");
 const router = Router();
-const { Thought, User } = require("../../models");
+const {
+  createReactionForThought,
+  removeReactionFromThought,
+} = require("../../controllers/api/reactions");
 
 //POST /reactions
-router.post("/reactions", async (req, res) => {});
+router.post("/reactions", createReactionForThought);
 
 //DEL /reactions/:id
-router.delete("/reactions/:id", async (req, res) => {});
+router.delete("/reactions/:id", removeReactionFromThought);
 
 module.exports = router;
