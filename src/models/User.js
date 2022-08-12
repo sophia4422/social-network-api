@@ -32,6 +32,13 @@ const userSchema = {
   ],
 };
 
+const options = {
+  toJSON: {
+    virtuals: true,
+  },
+  id: false,
+};
+
 const schema = new Schema(userSchema, options);
 
 schema.virtual("friendCount").get(function () {
