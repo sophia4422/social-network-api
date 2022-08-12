@@ -31,7 +31,7 @@ const createUser = async (req, res) => {
     const { username, email } = req.body;
 
     if (username && email) {
-      await User.create({ userName, email });
+      await User.create({ username, email });
       return res.json({ success: true });
     } else {
       return res.status(400).json({

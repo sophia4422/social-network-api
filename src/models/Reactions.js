@@ -7,7 +7,7 @@ const reactionSchema = {
     required: true,
     maxLength: 280,
   },
-  userName: {
+  username: {
     type: String,
     required: true,
   },
